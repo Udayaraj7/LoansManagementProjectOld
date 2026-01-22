@@ -1,0 +1,8 @@
+#CreateDialog\:\:Loans-title-inner {
+    visibility: hidden;
+}
+
+#CreateDialog\:\:Loans-title-inner::after {
+    content: "Loan Creation";
+    visibility: visible;
+}

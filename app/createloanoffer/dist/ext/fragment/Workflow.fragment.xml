@@ -1,0 +1,48 @@
+<!-- <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+	<VBox core:require="{ handler: 'createloanoffer/ext/fragment/Workflow'}">
+		<Button text="Workflow" press="handler.onPress" />
+	</VBox>
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+	<VBox core:require="{ handler: 'createloanoffer/ext/fragment/Workflow'}">
+		<Table  id="sampleTable" 
+             items="{
+    path: 'NfaDetailsToNfaWorkflowHistory',
+    sorter: {
+    path: 'level',
+    descending: false,
+    group: true},
+    groupHeaderFactory: 'handler.onPress'
+  }">
+                   <columns>
+				   <Column id="_IDGenColumn2" >
+                   	<Text id="_IDGenText1" text="Employee Name" />
+                   </Column>
+                   <Column id="_IDGenColumn3" >
+                   	<Text id="_IDGenText2" text="Employee ID" />
+                   </Column>
+                   <Column id="_IDGenColumn4" mergeDuplicates="true">
+                   	<Text id="_IDGenText3" text="Status" />
+                   </Column>
+                   <Column id="_IDGenColumn5" mergeDuplicates="true">
+                   	<Text id="_IDGenText4" text="Approved By" />
+                   </Column>
+                   <Column id="_IDGenColumn6" mergeDuplicates="true">
+                   	<Text id="_IDGenText5" text="Days Taken" />
+                   </Column>
+                   </columns>
+                   <items>
+                   	<ColumnListItem id="_IDGenColumnListItem" vAlign="Middle">
+                    <cells>
+				    <Text id="_IDGenText7" text="{EmployeeName}"></Text>
+                    <Text id="_IDGenText8" text="{EmployeeID}"></Text>
+                    <Text id="_IDGenText9" text="{Status}"></Text>
+                    <Text id="_IDGenText10" text="{ApprovedBy}"></Text>
+                    <Text id="_IDGenText11" text="{DaysTaken}"></Text>
+                    </cells>
+                    </ColumnListItem>
+                   </items>
+                </Table>
+	</VBox>
+</core:FragmentDefinition>

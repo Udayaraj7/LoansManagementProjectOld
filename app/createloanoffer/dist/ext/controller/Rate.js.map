@@ -1,0 +1,1 @@
+{"version":3,"file":"Rate.js","names":["sap","ui","define","MessageToast","rate","oContext","aSelectedContexts","show"],"sources":["Rate-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CACV,sBACD,SAASC,GACR,aAEA,MAAO,CAOHC,KAAM,SAASC,EAAUC,GACrBH,EAAaI,KAAK,kBACtB,EAER","ignoreList":[]}

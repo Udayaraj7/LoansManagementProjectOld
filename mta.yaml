@@ -2,12 +2,14 @@ _schema-version: 3.3.0
 ID: LoansManagement
 description: A simple CAP project.
 version: 1.0.0
+
 modules:
   - name: LoansManagement-srv
     type: nodejs
     path: gen/srv
     requires:
       - name: uaa_LoansManagement
+      - name: LoansManagement-db
     provides:
       - name: srv-api
         properties:
@@ -17,6 +19,7 @@ modules:
       instances: 1
     build-parameters:
       builder: npm-ci
+
   - name: LoansManagement-destination-content
     type: com.sap.application.content
     requires:
@@ -47,6 +50,7 @@ modules:
           existing_destinations_policy: ignore
     build-parameters:
       no-source: true
+
   - name: LoansManagement-app-content
     type: com.sap.application.content
     path: .
@@ -58,24 +62,10 @@ modules:
       build-result: resources
       requires:
         - artifacts:
-            - loansmanagement.zip
-          name: loansmanagement
-          target-path: resources/
-        - artifacts:
             - createloanoffer.zip
           name: createloanoffer
           target-path: resources/
-  - name: loansmanagement
-    type: html5
-    path: app/loansmanagement
-    build-parameters:
-      build-result: dist
-      builder: custom
-      commands:
-        - npm install
-        - npm run build:cf
-      supported-platforms:
-        []
+
   - name: createloanoffer
     type: html5
     path: app/createloanoffer
@@ -85,8 +75,16 @@ modules:
       commands:
         - npm install
         - npm run build:cf
-      supported-platforms:
-        []
+      supported-platforms: []
+
+  - name: LoansManagement-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: LoansManagement-db
+
 resources:
   - name: LoansManagement-destination-service
     type: org.cloudfoundry.managed-service
@@ -115,12 +113,14 @@ resources:
       service-plan: lite
     requires:
       - name: srv-api
+
   - name: LoansManagement_html_repo_host
     type: org.cloudfoundry.managed-service
     parameters:
       service: html5-apps-repo
       service-name: LoansManagement-html5-app-host-service
       service-plan: app-host
+
   - name: uaa_LoansManagement
     type: org.cloudfoundry.managed-service
     parameters:
@@ -128,9 +128,17 @@ resources:
       service: xsuaa
       service-name: LoansManagement-xsuaa-service
       service-plan: application
+
+  - name: LoansManagement-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
+
 build-parameters:
   before-all:
     - builder: custom

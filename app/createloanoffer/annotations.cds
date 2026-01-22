@@ -626,7 +626,7 @@ annotate service.Loans with @(
             {
                 $Type : 'UI.DataField',
                 Value : productType,
-                Label : 'productType',
+                Label : 'Product Type',
             },
             {
                 $Type : 'UI.DataField',
