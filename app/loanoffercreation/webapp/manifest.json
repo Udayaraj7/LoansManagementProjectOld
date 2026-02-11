@@ -196,6 +196,14 @@
                         "anchor": "Attachments"
                       },
                       "title": "Comments"
+                    },
+                    "Partners": {
+                      "subSections": {
+                        "IncomingPayments": {
+                          "template": "loanoffercreation.ext.fragment.IncomingPayments",
+                          "title": "Incoming Payments"
+                        }
+                      }
                     }
                   }
                 },
@@ -236,6 +244,30 @@
                       "text": "Rate"
                     }
                   }
+                },
+                "@com.sap.vocabularies.UI.v1.FieldGroup#ApplicationApproval": {
+                  "fields": {
+                    "CommitmentFragment": {
+                      "template": "loanoffercreation.ext.fragment.CommitmentFragment",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataField::commitmentDate"
+                      }
+                    }
+                  }
+                },
+                "contractToPartner/@com.sap.vocabularies.UI.v1.LineItem#Partners": {
+                  "columns": {
+                    "Paymentmethod": {
+                      "header": "paymentmethod",
+                      "width": "20%",
+                      "position": {
+                        "anchor": "DataField::nameAddress",
+                        "placement": "After"
+                      },
+                      "template": "loanoffercreation.ext.fragment.Paymentmethod"
+                    }
+                  }
                 }
               }
             }
@@ -259,6 +291,15 @@
         "sap.ui.controllerExtensions": {
           "sap.fe.templates.ListReport.ListReportController": {
             "controllerName": "loanoffercreation.ext.controller.Listcontr"
+          },
+          "sap.fe.templates.ObjectPage.ObjectPageController#loanoffercreation::ContractObjectPage": {
+            "controllerName": "loanoffercreation.ext.controller.PartnerSelect"
+          },
+          "sap.fe.templates.ObjectPage.ObjectPageController#loanoffercreation::PartnersObjectPage": {
+            "controllerName": "loanoffercreation.ext.controller.PartnerObjectPage"
+          },
+          "sap.fe.templates.ObjectPage.ObjectPageController": {
+            "controllerName": "loanoffercreation.ext.controller.ObjectPage"
           }
         }
       }

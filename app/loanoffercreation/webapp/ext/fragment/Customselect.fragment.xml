@@ -1,0 +1,39 @@
+<!-- <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Button core:require="{ handler: 'loanoffercreation/ext/fragment/Customselect'}" text="Sample Text" press="handler.onPress" />
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <VBox id="amortizationVBox">
+
+        <Label
+            text="Amortization:" />
+
+        <!-- Display mode (Active Entity) -->
+        <Text
+            visible="{= ${IsActiveEntity} }"
+            text="{paymentMethod}" />
+
+        <!-- Edit mode (Draft) -->
+        <MultiComboBox
+            id="multiAmortization"
+            width="100%"
+            visible="{= !${IsActiveEntity} }"
+            items="{
+                path: '/PaymentMethodSearchHelp',
+                templateShareable: false
+            }"
+            selectedKeys="{
+                path: 'paymentMethod',
+                formatter: '.handler.formatToKeys'
+            }"
+            selectionFinish=".handler.onSelectionFinish">
+
+            <core:Item key="{id}" text="{value}" />
+        </MultiComboBox>
+
+    </VBox>
+
+</core:FragmentDefinition>

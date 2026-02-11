@@ -263,6 +263,12 @@ annotate service.Contract with @(
             ],
         },
         {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'FM Details',
+            ID : 'FMDetails',
+            Target : 'contractTofmdetails/@UI.LineItem#FMDetails',
+        },
+        {
             $Type : 'UI.CollectionFacet',
             Label : 'Partner',
             ID : 'Partners',
@@ -543,6 +549,46 @@ annotate service.Contract with @(
             },
         ],
     },
+    UI.FieldGroup #IncomingPayments : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.partnerToContract.contractToPartner.arBillingJob,
+                Label : 'arBillingJob',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.partnerToContract.contractToPartner.paymentMethod,
+                Label : 'paymentMethod',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.partnerToContract.contractToPartner.payoffLock,
+                Label : 'payoffLock',
+            },
+        ],
+    },
+    UI.FieldGroup #IncomingPayments1 : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.arBillingJob,
+                Label : 'arBillingJob',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.paymentMethod,
+                Label : 'paymentMethod',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contractToPartner.payoffLock,
+                Label : 'payoffLock',
+            },
+        ],
+    },
 );
 
 annotate service.ConditionItemsNew with @(
@@ -770,4 +816,64 @@ annotate service.Partners with {
         },
         Common.ValueListWithFixedValues : true,
 )};
+
+annotate service.FMDetails with @(
+    UI.LineItem #FMDetails : [
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.budgetPd,
+            Label : 'budgetPd',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.companyInd,
+            Label : 'companyInd',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.costCenter,
+            Label : 'costCenter',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.DocumentItem,
+            Label : 'DocumentItem',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.WBSelement,
+            Label : 'WBSelement',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.text,
+            Label : 'text',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.originalAmount,
+            Label : 'originalAmount',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.orders,
+            Label : 'orders',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.loanCategory,
+            Label : 'loanCategory',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.GLaccount,
+            Label : 'GLaccount',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : fmdetailsToContract.contractTofmdetails.fund,
+            Label : 'fund',
+        },
+    ]
+);
 

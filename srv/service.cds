@@ -12,5 +12,13 @@ service MyService {
     entity PaymentMethodSearchHelp as projection on db.PaymentMethodSearchHelp;
     entity ARBillingJobSearchHelp as projection on db.ARBillingJobSearchHelp;
 
+    entity Disbursement as projection on db.Disbursement;
+    entity FMDetails as projection on db.FMDetails;
+    entity DisburstmentPaymentMethodSearchHelp as projection on db.DisburstmentPaymentMethodSearchHelp;
+    entity BankDetailsSearchHelp as projection on db.BankDetailsSearchHelp;
+    entity HouseBankSearchHelp as projection on db.HouseBankSearchHelp;
+
 
 }
+
+

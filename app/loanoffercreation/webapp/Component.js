@@ -1,12 +1,16 @@
 sap.ui.define(
-    ["sap/fe/core/AppComponent"],
-    function (Component) {
-        "use strict";
+  [
+    "sap/fe/core/AppComponent",
+    "sap/ui/core/Configuration"
+  ],
+  function (Component, Configuration) {
+    "use strict";
 
-        return Component.extend("loanoffercreation.Component", {
-            metadata: {
-                manifest: "json"
-            }
-        });
-    }
+    return Component.extend("loanoffercreation.Component", {
+      metadata: {
+        manifest: "json"
+      },
+
+    });
+  }
 );

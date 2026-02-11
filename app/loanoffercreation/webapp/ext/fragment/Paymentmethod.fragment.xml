@@ -1,0 +1,40 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+
+    <VBox>
+
+        <!-- Display mode -->
+        <Text
+            visible="{= ${IsActiveEntity} }"
+            text="{paymentMethod}" />
+
+        <!-- Edit mode -->
+        <MultiComboBox
+            id="idPaymentMethods"
+            width="100%"
+            visible="{= !${IsActiveEntity} }"
+            items="{
+                path: '/PaymentMethodSearchHelp',
+                templateShareable: false
+            }"
+            selectedKeys="{
+                path: 'paymentMethod',
+                targetType: 'any',
+                formatter: 'handler.formatStringToKeys'
+            }"
+            selectionFinish="handler.onSelectionFinish"
+             core:require="{
+        handler: 'loanoffercreation/ext/fragment/Paymentmethod'
+    }">
+
+            <core:Item
+                key="{value}"
+                text="{value}" />
+
+        </MultiComboBox>
+
+    </VBox>
+
+</core:FragmentDefinition>

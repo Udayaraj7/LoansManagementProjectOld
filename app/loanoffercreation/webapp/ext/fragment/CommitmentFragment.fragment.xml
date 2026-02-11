@@ -1,0 +1,46 @@
+<!-- <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Button core:require="{ handler: 'loanoffercreation/ext/fragment/CommitmentFragment'}" text="CommitmentFragment" press="handler.onPress" />
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <VBox
+        id="commitmentDateVBox"
+        >
+
+        <Label
+            id="commitmentDateLabel"
+            text="commitment Date:" />
+
+        <Text
+            id="commitmentDateText"
+            visible="{= ${IsActiveEntity} }"
+            text="{
+                path: 'commitmentDate',
+                type: 'sap.ui.model.type.Date',
+                formatOptions: {
+                    source: { pattern: 'yyyy-MM-dd' },
+                    pattern: 'MM-dd-yyyy'
+                }
+            }"
+        />
+
+        <DatePicker
+            id="commitmentDatePicker"
+            visible="{= !${IsActiveEntity} }"
+            value="{
+                path: 'commitmentDate',
+                type: 'sap.ui.model.type.Date',
+                formatOptions: {
+                    source: { pattern: 'yyyy-MM-dd' },
+                    pattern: 'MM-dd-yyyy'
+                }
+            }"
+            width="100%"
+        />
+
+    </VBox>
+
+</core:FragmentDefinition>
