@@ -14,7 +14,7 @@ formatStringToKeys: function (sValue) {
         return [];
     }
     // Split by comma and trim each value to remove extra spaces
-    return sValue.split(",").map(function(s) {
+    return sValue.split("|").map(function(s) {
         return s.trim();
     });
 },
@@ -30,10 +30,11 @@ onSelectionFinish: function (oEvent) {
  
             // extract text values
             var aValues = aItems.map(function (item) {
-                return item.getText();
+                return  item.getKey();
             });
+            var avalues
  
-            var sConcatenated = aValues.join(",");
+            var sConcatenated = aValues.join("|");
  
             var oContext = oMCB.getBindingContext();
             if (!oContext) return;
